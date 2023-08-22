@@ -26,8 +26,12 @@ type generic_handler struct {
 func (generic_handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	var head string
 	head, r.URL.Path = shift_path(r.URL.Path)
- if head == "test" {
+ 	if head == "test" {
 		test_handle(w, r)
+	} else if head == "bitwise_test" {
+		bitwise_handle(w, r)
+	} else if head == "bitwise_test_post" {
+		bitwise_post_handler(w, r)
 	} else if head == "ajax-example" {
 		ajax_handle(w, r)
 	} else {

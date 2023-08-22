@@ -46,8 +46,13 @@ func test_handle(w http.ResponseWriter, r *http.Request) {
 		<div class="container mx-auto p-8">
 			<h1 class="text-3xl font-semibold">{{.Header}}</h1>
 			<p class="my-4">{{.Body}}</p>
-			<button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" hx-get="/ajax-example" hx-target="#ajax-result">Load Content via AJAX</button>
-			<div id="ajax-result" class="mt-4"></div>
+			<button hx-get="/bitwise_test" hx-target="#bitwise_test">Load Content via AJAX</button>
+			<div id="bitwise_test" class="mt-4"></div>
+
+<br>
+<br>
+			<bitton hx-get="/bitwise_test_post" hx-target="#bitwise_test_post">Add new bitwise</button>
+			<div id="bitwise_test_post" class="mt-4"></div>
 		</div>
 	</body>
 	</html>
