@@ -39,19 +39,27 @@ func bitwise_post_handler(w http.ResponseWriter, r *http.Request) {
 
 
 var bitwise_template string = `<div>
-	<p>{{.Label}}</p>
-	<p>{{.Bitwise}}</p>
+	{{range $key, $value := .Set}} 
+	<p> Key: {{$key}} </p>
+	<p> Label: {{$value}} </p>
+	{{end}}
 	</div>`
 type bitwise_struct struct {
 	Label string
 	Bitwise int
 }
 
-func bitwise_handle(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.New("Test")
-	comp_tmpl := template.Must(tmpl.Parse(bitwise_template))
+type bitwise_set_container struct {
+	Set map[int]string
+}
 
-	bitwise_tester := bitwise_struct{Label: bitwise_map[1], Bitwise: 1}
+func bitwise_handle(w http.ResponseWriter, r *http.Request) {
+	tmpl := template.New("Bitwise List")
+	comp_tmpl := template.Must(tmpl.Parse(bitwise_template))	
+
+	bitwise_tester := bitwise_set_container{
+		Set: bitwise_map,
+	}
 
 	err := comp_tmpl.Execute(w, bitwise_tester)
 	if err != nil {
