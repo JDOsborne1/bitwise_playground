@@ -44,6 +44,12 @@ func landing_handle(w http.ResponseWriter, r *http.Request) {
 			<button hx-get="/bitwise_test_post" hx-target="#bitwise_test_post">Add new bitwise</button>
 			<div id="bitwise_test_post" class="mt-4"></div>
 		</div>
+
+		<br><br>
+		<div>
+		<button hx-get="/combinations" hx-target="#combinations"> Regenerate Combinations </button>
+		<div id="combinations"> </div>
+		</div>
 	</body>
 	</html>
 	<!-- END -->
