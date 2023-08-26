@@ -31,9 +31,13 @@ type test_struct2 struct {
 	Body   string
 }
 
-func test_handle(w http.ResponseWriter, r *http.Request) {
+func landing_handle(w http.ResponseWriter, r *http.Request) {
 
-	starting_struct := test_struct2{Title: "Test", Header: "Test Header", Body: "Test Body"}
+	starting_struct := test_struct2{
+		Title: "Landing Page", 
+		Header: "Entrypoint to bitwise excellence", 
+		Body: "Get ready to start your journey into Bitwise excellence. There are two sections, the definitons and the combinations",
+	}
 
 	layout_test := `<!DOCTYPE html>
 	<html>
@@ -46,12 +50,16 @@ func test_handle(w http.ResponseWriter, r *http.Request) {
 		<div class="container mx-auto p-8">
 			<h1 class="text-3xl font-semibold">{{.Header}}</h1>
 			<p class="my-4">{{.Body}}</p>
-			<button hx-get="/bitwise_test" hx-target="#bitwise_test">Load Content via AJAX</button>
-			<div id="bitwise_test" class="mt-4"></div>
+			</div>
+			<div>
+			<button hx-get="/bitwise_list" hx-target="#bitwise_list">List Available Bitwise</button>
+			<div id="bitwise_list" class="mt-4"></div>
+			</div>
 
 <br>
 <br>
-			<bitton hx-get="/bitwise_test_post" hx-target="#bitwise_test_post">Add new bitwise</button>
+<div>
+			<button hx-get="/bitwise_test_post" hx-target="#bitwise_test_post">Add new bitwise</button>
 			<div id="bitwise_test_post" class="mt-4"></div>
 		</div>
 	</body>

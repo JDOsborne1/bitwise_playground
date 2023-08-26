@@ -26,9 +26,9 @@ type generic_handler struct {
 func (generic_handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	var head string
 	head, r.URL.Path = shift_path(r.URL.Path)
- 	if head == "test" {
-		test_handle(w, r)
-	} else if head == "bitwise_test" {
+	if head == "test" {
+		landing_handle(w, r)
+	} else if head == "bitwise_list" {
 		bitwise_handle(w, r)
 	} else if head == "bitwise_test_post" {
 		bitwise_post_handler(w, r)
