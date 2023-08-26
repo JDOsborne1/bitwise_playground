@@ -32,8 +32,6 @@ func (generic_handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		bitwise_handle(w, r)
 	} else if head == "bitwise_test_post" {
 		bitwise_post_handler(w, r)
-	} else if head == "ajax-example" {
-		ajax_handle(w, r)
 	} else {
 		w.WriteHeader(http.StatusServiceUnavailable)
 	}

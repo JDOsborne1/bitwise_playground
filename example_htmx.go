@@ -6,24 +6,6 @@ import (
 	"net/http"
 )
 
-var ajax_tester *test_struct = &test_struct{Author: "John Doe", Body: "This is a test", Counter: 1}
-
-func ajax_handle(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.New("Test")
-	comp_tmpl := template.Must(tmpl.Parse(`<div><p>{{.Author}}</p><p>{{.Body}} for the {{.Counter}}th time</p></div>`))
-
-	ajax_tester.Counter += 1
-	err := comp_tmpl.Execute(w, ajax_tester)
-	if err != nil {
-		fmt.Println("Issues with Template: ", err)
-	}
-}
-
-type test_struct struct {
-	Author  string
-	Body    string
-	Counter int
-}
 
 type test_struct2 struct {
 	Title  string
