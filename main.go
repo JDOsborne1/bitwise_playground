@@ -11,6 +11,6 @@ var files embed.FS
 
 func main() {
 
-	handler := new(generic_handler)
+	handler := new(handler)
 	log.Fatal(http.ListenAndServe(":8081", handler))
 }

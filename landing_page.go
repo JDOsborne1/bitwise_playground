@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-type test_struct2 struct {
+type landing_data struct {
 	Title  string
 	Header string
 	Body   string
@@ -13,7 +13,7 @@ type test_struct2 struct {
 
 func landing_handle(w http.ResponseWriter, r *http.Request) error {
 
-	starting_struct := test_struct2{
+	starting_struct := landing_data{
 		Title:  "Landing Page",
 		Header: "Entrypoint to bitwise excellence",
 		Body:   "Get ready to start your journey into Bitwise excellence. There are two sections, the definitons and the combinations",

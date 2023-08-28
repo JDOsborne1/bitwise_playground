@@ -32,10 +32,6 @@ func bitwise_post_handler(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-type bitwise_struct struct {
-	Label   string
-	Bitwise int
-}
 
 type bitwise_set_container struct {
 	Set map[int]string

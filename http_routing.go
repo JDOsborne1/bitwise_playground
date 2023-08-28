@@ -18,13 +18,13 @@ func shift_path(p string) (head, tail string) {
 	return p[1:i], p[i:]
 }
 
-type generic_handler struct {
+type handler struct {
 }
 
 // ServeHTTP is a custom replacement for the default handler from the http package.
 // It makes use of the shift path strategy to walk through the route and then delegate
 // the processing to the appropriate sub handler or sub strategy.
-func (generic_handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	var head string
 	var err error
 	head, r.URL.Path = shift_path(r.URL.Path)
