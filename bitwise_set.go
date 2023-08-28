@@ -7,12 +7,11 @@ import (
 	"strconv"
 )
 
-
 func bitwise_post_handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 
 		comp_tmpl, err := template.ParseFS(files, "bitwise_post_form.html")
-		
+
 		if err != nil {
 			fmt.Println("Issues with Template: ", err)
 		}
@@ -24,18 +23,17 @@ func bitwise_post_handler(w http.ResponseWriter, r *http.Request) {
 
 	} else if r.Method == "POST" {
 
-	r.ParseForm()
-	bitwise_int, err := strconv.Atoi(r.FormValue("bitwise"))
-	if err != nil {
-		fmt.Println("Issues with Atoi: ", err)
-	}
-	bitwise_map[bitwise_int] = r.FormValue("label")
+		r.ParseForm()
+		bitwise_int, err := strconv.Atoi(r.FormValue("bitwise"))
+		if err != nil {
+			fmt.Println("Issues with Atoi: ", err)
+		}
+		bitwise_map[bitwise_int] = r.FormValue("label")
 	}
 }
 
-
 type bitwise_struct struct {
-	Label string
+	Label   string
 	Bitwise int
 }
 
@@ -46,7 +44,6 @@ type bitwise_set_container struct {
 func bitwise_handle(w http.ResponseWriter, r *http.Request) {
 	comp_tmpl, err := template.ParseFS(files, "bitwise_list.html")
 
-	
 	if err != nil {
 		fmt.Println("Issues with Template: ", err)
 	}

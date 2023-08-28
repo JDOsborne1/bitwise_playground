@@ -6,7 +6,6 @@ import (
 	"net/http"
 )
 
-
 type test_struct2 struct {
 	Title  string
 	Header string
@@ -16,9 +15,9 @@ type test_struct2 struct {
 func landing_handle(w http.ResponseWriter, r *http.Request) {
 
 	starting_struct := test_struct2{
-		Title: "Landing Page", 
-		Header: "Entrypoint to bitwise excellence", 
-		Body: "Get ready to start your journey into Bitwise excellence. There are two sections, the definitons and the combinations",
+		Title:  "Landing Page",
+		Header: "Entrypoint to bitwise excellence",
+		Body:   "Get ready to start your journey into Bitwise excellence. There are two sections, the definitons and the combinations",
 	}
 
 	comp_tmpl, err := template.ParseFS(files, "landing.html")
