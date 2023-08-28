@@ -21,45 +21,13 @@ func landing_handle(w http.ResponseWriter, r *http.Request) {
 		Body: "Get ready to start your journey into Bitwise excellence. There are two sections, the definitons and the combinations",
 	}
 
-	layout_test := `<!DOCTYPE html>
-	<html>
-	<head>
-		<title>{{.Title}}</title>
-		<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/htmx.org@1.5.0/dist/htmx.min.js"></script>
-	</head>
-	<body class="bg-gray-100">
-		<div class="container mx-auto p-8">
-			<h1 class="text-3xl font-semibold">{{.Header}}</h1>
-			<p class="my-4">{{.Body}}</p>
-			</div>
-			<div>
-			<button hx-get="/bitwise_list" hx-target="#bitwise_list">List Available Bitwise</button>
-			<div id="bitwise_list" class="mt-4"></div>
-			</div>
+	comp_tmpl, err := template.ParseFS(files, "landing.html")
 
-<br>
-<br>
-<div>
-			<button hx-get="/bitwise_test_post" hx-target="#bitwise_test_post">Add new bitwise</button>
-			<div id="bitwise_test_post" class="mt-4"></div>
-		</div>
+	if err != nil {
+		fmt.Println("Issue with template: ", err)
+	}
 
-		<br><br>
-		<div>
-		<button hx-get="/combinations" hx-target="#combinations"> Regenerate Combinations </button>
-		<div id="combinations"> </div>
-		</div>
-	</body>
-	</html>
-	<!-- END -->
-	
-	`
-
-	tmpl := template.New("Test")
-	comp_tmpl := template.Must(tmpl.Parse(layout_test))
-
-	err := comp_tmpl.Execute(w, starting_struct)
+	err = comp_tmpl.Execute(w, starting_struct)
 	if err != nil {
 		fmt.Println("Issues with Template: ", err)
 	}

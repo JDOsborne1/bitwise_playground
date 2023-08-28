@@ -1,10 +1,14 @@
 package main
 
 import (
+	"embed"
 	"html/template"
 	"log"
 	"net/http"
 )
+
+//go:embed *.html
+var files embed.FS
 
 type bitwise_combo struct {
 	first_bit int

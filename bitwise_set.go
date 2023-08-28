@@ -7,23 +7,21 @@ import (
 	"strconv"
 )
 
-var bitwise_post_form string = `<form hx-post="/bitwise_test_post">
-	<input type="text" name="bitwise" value="1">
-	<br>
-	<input type="text" name="label" value="test">
-	<br>
-	<input type="submit" value="Submit">	
-</form>`
 
 func bitwise_post_handler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		tmpl := template.New("Test")
-		comp_tmpl := template.Must(tmpl.Parse(bitwise_post_form))
+
+		comp_tmpl, err := template.ParseFS(files, "bitwise_post_form.html")
 		
-		err := comp_tmpl.Execute(w, nil)
 		if err != nil {
 			fmt.Println("Issues with Template: ", err)
 		}
+
+		err = comp_tmpl.Execute(w, nil)
+		if err != nil {
+			fmt.Println("Issues with Template: ", err)
+		}
+
 	} else if r.Method == "POST" {
 
 	r.ParseForm()
@@ -36,12 +34,6 @@ func bitwise_post_handler(w http.ResponseWriter, r *http.Request) {
 }
 
 
-var bitwise_template string = `<div>
-	{{range $key, $value := .Set}} 
-	<p> Key: {{$key}} </p>
-	<p> Label: {{$value}} </p>
-	{{end}}
-	</div>`
 type bitwise_struct struct {
 	Label string
 	Bitwise int
@@ -52,14 +44,18 @@ type bitwise_set_container struct {
 }
 
 func bitwise_handle(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.New("Bitwise List")
-	comp_tmpl := template.Must(tmpl.Parse(bitwise_template))	
+	comp_tmpl, err := template.ParseFS(files, "bitwise_list.html")
+
+	
+	if err != nil {
+		fmt.Println("Issues with Template: ", err)
+	}
 
 	bitwise_tester := bitwise_set_container{
 		Set: bitwise_map,
 	}
 
-	err := comp_tmpl.Execute(w, bitwise_tester)
+	err = comp_tmpl.Execute(w, bitwise_tester)
 	if err != nil {
 		fmt.Println("Issues with Template: ", err)
 	}
