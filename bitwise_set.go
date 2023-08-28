@@ -32,7 +32,6 @@ func bitwise_post_handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Issues with Atoi: ", err)
 	}
 	bitwise_map[bitwise_int] = r.FormValue("label")
-	fmt.Println(bitwise_map)
 	}
 }
 

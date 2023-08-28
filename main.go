@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -20,6 +19,7 @@ type set_of_combos struct {
 	Set []bitwise_combo
 }
 
+// TODO - Allow and exclusions function, to prevent using output labels as input
 func combinations_of_elements(_set_of_bitwise map[int]string) []bitwise_combo {
 	var resp []bitwise_combo
 	for bit, label := range _set_of_bitwise {
@@ -65,11 +65,6 @@ func comb_handle(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
-	bitwise_map[1] = "test"
-	bitwise_map[2] = "test2"
-
-	fmt.Println(bitwise_map)
 
 	handler := new(generic_handler)
 	log.Fatal(http.ListenAndServe(":8081", handler))
