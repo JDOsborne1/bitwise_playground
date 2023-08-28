@@ -46,19 +46,14 @@ func (b bitwise_combo) First() string {
 	return b.First_label
 }
 
-var combo_template string = `<div>
-{{range $val := .Set}}
-<p> Combine {{$val.First_label}} and {{$val.Second_label}} into: {{$val.Result_label}} </p>
-{{end}}
-</div>`
 
 func comb_handle(w http.ResponseWriter, r *http.Request) {
 	out := combinations_of_elements(bitwise_map)
 	set := set_of_combos{
 		Set: out,
 	}
-	tmpl := template.New("Combos")
-	comp_tmpl := template.Must(tmpl.Parse(combo_template))
+	
+	comp_tmpl, _ := template.ParseFS(files, "combinations.html") 
 
 	comp_tmpl.Execute(w, set)
 
