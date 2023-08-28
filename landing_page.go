@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -12,7 +11,7 @@ type test_struct2 struct {
 	Body   string
 }
 
-func landing_handle(w http.ResponseWriter, r *http.Request) {
+func landing_handle(w http.ResponseWriter, r *http.Request) error {
 
 	starting_struct := test_struct2{
 		Title:  "Landing Page",
@@ -23,11 +22,13 @@ func landing_handle(w http.ResponseWriter, r *http.Request) {
 	comp_tmpl, err := template.ParseFS(files, "landing.html")
 
 	if err != nil {
-		fmt.Println("Issue with template: ", err)
+		return err
 	}
 
 	err = comp_tmpl.Execute(w, starting_struct)
 	if err != nil {
-		fmt.Println("Issues with Template: ", err)
+		return err
 	}
+
+	return nil
 }

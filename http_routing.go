@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"path"
 	"strings"
@@ -25,16 +26,22 @@ type generic_handler struct {
 // the processing to the appropriate sub handler or sub strategy.
 func (generic_handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	var head string
+	var err error
 	head, r.URL.Path = shift_path(r.URL.Path)
 	if head == "test" {
-		landing_handle(w, r)
+		err = landing_handle(w, r)
 	} else if head == "bitwise_list" {
-		bitwise_handle(w, r)
+		err = bitwise_handle(w, r)
 	} else if head == "bitwise_test_post" {
-		bitwise_post_handler(w, r)
+		err = bitwise_post_handler(w, r)
 	} else if head == "combinations" {
-		comb_handle(w, r)
+		err = comb_handle(w, r)
 	} else {
 		w.WriteHeader(http.StatusServiceUnavailable)
+	}
+
+	if err != nil {
+		fmt.Fprint(w, err)
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 }

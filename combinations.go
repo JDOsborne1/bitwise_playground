@@ -41,18 +41,22 @@ func combinations_of_elements(_set_of_bitwise map[int]string) []bitwise_combo {
 	return resp
 }
 
-func (b bitwise_combo) First() string {
-	return b.First_label
-}
-
-func comb_handle(w http.ResponseWriter, r *http.Request) {
+func comb_handle(w http.ResponseWriter, r *http.Request) error {
+	var err error
 	out := combinations_of_elements(bitwise_map)
 	set := set_of_combos{
 		Set: out,
 	}
 
-	comp_tmpl, _ := template.ParseFS(files, "combinations.html")
+	comp_tmpl, err := template.ParseFS(files, "combinations.html")
+	if err != nil {
+		return err
+	}
 
-	comp_tmpl.Execute(w, set)
+	err = comp_tmpl.Execute(w, set)
+	if err != nil {
+		return err
+	}
 
+	return nil
 }
