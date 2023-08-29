@@ -1,7 +1,11 @@
-<form hx-post="/bitwise_test_post">
-	<input type="text" name="bitwise" value="1">
-	<br>
-	<input type="text" name="label" value="test">
-	<br>
-	<input type="submit" value="Submit">
+<form class="mt-4" hx-post="/bitwise_test_post">
+    <div class="mb-2">
+        <label class="font-semibold block">Bitwise:</label>
+        <input type="text" name="bitwise" value="1" class="w-full border rounded p-2">
+    </div>
+    <div class="mb-2">
+        <label class="font-semibold block">Label:</label>
+        <input type="text" name="label" value="test" class="w-full border rounded p-2">
+    </div>
+    <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Submit</button>
 </form>

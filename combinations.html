@@ -1,5 +1,7 @@
-<div>
+<div class="mt-4">
     {{range $val := .Set}}
-    <p> Combine {{$val.First_label}} and {{$val.Second_label}} into: {{$val.Result_label}} </p>
+    <p class="mb-2"> Combine <span class="font-semibold">{{$val.First_label}}</span> and <span
+            class="font-semibold">{{$val.Second_label}}</span> into: <span
+            class="font-semibold">{{$val.Result_label}}</span> </p>
     {{end}}
 </div>

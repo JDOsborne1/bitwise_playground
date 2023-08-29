@@ -1,6 +1,8 @@
-<div>
-	{{range $key, $value := .Set}}
-	<p> Key: {{$key}} </p>
-	<p> Label: {{$value}} </p>
-	{{end}}
+<div class="mt-4">
+    {{range $key, $value := .Set}}
+    <div class="mb-2">
+        <p class="font-semibold"> Key: <span class="text-gray-700">{{$key}}</span> </p>
+        <p class="font-semibold"> Label: <span class="text-gray-700">{{$value}}</span> </p>
+    </div>
+    {{end}}
 </div>
