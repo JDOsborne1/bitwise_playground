@@ -1,8 +1,12 @@
 <div class="mt-4">
     {{range $key, $value := .Set}}
-    <div class="mb-2">
-        <p class="font-semibold"> Key: <span class="text-gray-700">{{$key}}</span> </p>
-        <p class="font-semibold"> Label: <span class="text-gray-700">{{$value}}</span> </p>
+    <div class="flex items-center overflow-hidden py-2">
+        <div class="bg-blue-100 px-4">
+            <p class="text-sm text-gray-600">{{$key}}</p>
+        </div>
+        <div class="bg-blue-300 px-4 rounded-r-full">
+            <p class="text-sm text-gray-600">{{$value}}</p>
+        </div>
     </div>
     {{end}}
 </div>
