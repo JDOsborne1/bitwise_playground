@@ -28,6 +28,7 @@ func bitwise_post_handler(w http.ResponseWriter, r *http.Request) error {
 			return err
 		}
 		bitwise_map[bitwise_int] = r.FormValue("label")
+		w.Header().Add("HX-Trigger", "new_bitwise")
 	}
 	return nil
 }

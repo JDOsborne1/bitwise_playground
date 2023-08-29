@@ -14,7 +14,7 @@
     </div>
     <div class="flex">
         <div class="w-1/2 p-4">
-            <button hx-get="/bitwise_list" hx-target="#bitwise_list" 
+            <button hx-get="/bitwise_list" hx-target="#bitwise_list" hx-trigger="new_bitwise from:body"
                 class="px-4 py-2 bg-blue-500 text-white rounded">List Available Bitwise</button>
             <div id="bitwise_list" class="mt-4"></div>
 
@@ -23,7 +23,7 @@
             <div id="bitwise_test_post" class="mt-4"></div>
         </div>
         <div class="w-1/2 p-4 bg-white border-l">
-            <button hx-get="/combinations" hx-target="#combinations" 
+            <button hx-get="/combinations" hx-target="#combinations" hx-trigger="new_bitwise from:body"
                 class="px-4 py-2 bg-blue-500 text-white rounded">Regenerate Combinations</button>
             <div id="combinations" class="mt-4"></div>
         </div>
