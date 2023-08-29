@@ -1,7 +1,32 @@
 <div class="mt-4">
     {{range $val := .Set}}
-    <p class="mb-2"> Combine <span class="font-semibold">{{$val.First_label}}</span> and <span
-            class="font-semibold">{{$val.Second_label}}</span> into: <span
-            class="font-semibold">{{$val.Result_label}}</span> </p>
+    <p> Combine <div class="inline-block">
+        <div class="flex">
+        <div class="bg-blue-100 px-4">
+            <p class="text-sm text-gray-600">{{$val.First_bit}}</p>
+        </div>
+        <div class="bg-blue-300 px-4 rounded-r-full">
+            <p class="text-sm text-gray-600">{{$val.First_label}}</p>
+        </div>
+        </div>
+    </div> and <div class="inline-block">
+    <div class="flex">
+        <div class="bg-blue-100 px-4">
+            <p class="text-sm text-gray-600">{{$val.Second_bit}}</p>
+        </div>
+        <div class="bg-blue-300 px-4 rounded-r-full">
+            <p class="text-sm text-gray-600">{{$val.Second_label}}</p>
+        </div>
+        </div>
+    </div> into: <div class="inline-block">
+    <div class="flex">
+        <div class="bg-blue-100 px-4">
+            <p class="text-sm text-gray-600">{{$val.Result_bit}}</p>
+        </div>
+        <div class="bg-blue-300 px-4 rounded-r-full">
+            <p class="text-sm text-gray-600">{{$val.Result_label}}</p>
+        </div>
+        </div>
+    </div> </p>
     {{end}}
 </div>

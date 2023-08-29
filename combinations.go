@@ -6,11 +6,11 @@ import (
 )
 
 type bitwise_combo struct {
-	first_bit    int
+	First_bit    int
 	First_label  string
-	second_bit   int
+	Second_bit   int
 	Second_label string
-	result_bit   int
+	Result_bit   int
 	Result_label string
 }
 
@@ -28,11 +28,11 @@ func combinations_of_elements(_set_of_bitwise map[int]string) []bitwise_combo {
 			}
 			comb_bit := bit ^ bit2
 			new_comb := bitwise_combo{
-				first_bit:    bit,
+				First_bit:    bit,
 				First_label:  label,
-				second_bit:   bit2,
+				Second_bit:   bit2,
 				Second_label: label2,
-				result_bit:   comb_bit,
+				Result_bit:   comb_bit,
 				Result_label: bitwise_map[comb_bit],
 			}
 			resp = append(resp, new_comb)
