@@ -12,23 +12,23 @@
         <h1 class="text-3xl font-semibold">{{.Header}}</h1>
         <p class="my-4">{{.Body}}</p>
     </div>
-    <div>
-        <button hx-get="/bitwise_list" hx-target="#bitwise_list">List Available Bitwise</button>
-        <div id="bitwise_list" class="mt-4"></div>
-    </div>
+    <div class="flex">
+        <div class="w-1/2 p-4">
+            <button hx-get="/bitwise_list" hx-target="#bitwise_list" 
+                class="px-4 py-2 bg-blue-500 text-white rounded">List Available Bitwise</button>
+            <div id="bitwise_list" class="mt-4"></div>
 
-    <br>
-    <br>
-    <div>
-        <button hx-get="/bitwise_test_post" hx-target="#bitwise_test_post">Add new bitwise</button>
-        <div id="bitwise_test_post" class="mt-4"></div>
-    </div>
-
-    <br><br>
-    <div>
-        <button hx-get="/combinations" hx-target="#combinations"> Regenerate Combinations </button>
-        <div id="combinations"> </div>
+            <button hx-get="/bitwise_test_post" hx-target="#bitwise_test_post"
+                class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Add new bitwise</button>
+            <div id="bitwise_test_post" class="mt-4"></div>
+        </div>
+        <div class="w-1/2 p-4 bg-white border-l">
+            <button hx-get="/combinations" hx-target="#combinations" 
+                class="px-4 py-2 bg-blue-500 text-white rounded">Regenerate Combinations</button>
+            <div id="combinations" class="mt-4"></div>
+        </div>
     </div>
 </body>
+
 
 </html>
