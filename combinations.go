@@ -18,12 +18,20 @@ type set_of_combos struct {
 	Set []bitwise_combo
 }
 
+var excluded_bits = make(map[int]bool)
+
 // TODO - Allow and exclusions function, to prevent using output labels as input
-func combinations_of_elements(_set_of_bitwise map[int]string) []bitwise_combo {
+func combinations_of_elements(_set_of_bitwise map[int]string, _excluded_bits map[int]bool) []bitwise_combo {
 	var resp []bitwise_combo
 	for bit, label := range _set_of_bitwise {
+		if _excluded_bits[bit] {
+			continue
+		}
 		for bit2, label2 := range _set_of_bitwise {
 			if bit == bit2 {
+				continue
+			}
+			if _excluded_bits[bit2] {
 				continue
 			}
 			comb_bit := bit ^ bit2
@@ -43,7 +51,8 @@ func combinations_of_elements(_set_of_bitwise map[int]string) []bitwise_combo {
 
 func comb_handle(w http.ResponseWriter, r *http.Request) error {
 	var err error
-	out := combinations_of_elements(bitwise_map)
+
+	out := combinations_of_elements(bitwise_map, excluded_bits)
 	set := set_of_combos{
 		Set: out,
 	}
