@@ -1,12 +1,12 @@
 <div class="mt-4">
     {{range $key, $value := .Set}}
-    <div class="flex items-center overflow-hidden py-2">
+    <button hx-get="/toggle_output?bit={{$key}}" hx-trigger="click" hx-swap="none" class="flex items-center overflow-hidden py-2">
         <div class="bg-blue-100 px-4">
             <p class="text-sm text-gray-600">{{$key}}</p>
         </div>
         <div class="bg-blue-300 px-4 rounded-r-full">
             <p class="text-sm text-gray-600">{{$value}}</p>
         </div>
-    </div>
+    </button>
     {{end}}
 </div>

@@ -36,6 +36,8 @@ func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		err = bitwise_post_handler(w, r)
 	} else if head == "combinations" {
 		err = comb_handle(w, r)
+	} else if head == "toggle_output" {
+		err = display_toggle_handle(w, r)
 	} else {
 		w.WriteHeader(http.StatusServiceUnavailable)
 	}
