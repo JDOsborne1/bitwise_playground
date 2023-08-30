@@ -28,7 +28,7 @@ func (handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	var head string
 	var err error
 	head, r.URL.Path = shift_path(r.URL.Path)
-	if head == "test" {
+	if head == "" {
 		err = landing_handle(w, r)
 	} else if head == "bitwise_list" {
 		err = bitwise_handle(w, r)
